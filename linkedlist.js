@@ -1,26 +1,30 @@
+
 class Node {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
+    constructor(data, next = null) {
+        this.data = data,
+        this.next = next
     }
 }
+
 function insertNodeAtPosition(head, data, position) {
 
     let aNode = new Node(data);
-    previousNode = getNodeAtPosition(head, position - 1);
-    nextNode = getNodeAtPosition(position + 1);
+    let previousNode = getNodeAtPosition(head, position - 1);
+    let nextNode = getNodeAtPosition(position + 1);
     aNode.next = previousNode.next;
     previousNode.next = aNode;
     return head
 }
+
+
 function getNodeAtPosition(linkedList, postion){
     let counter = 0
-    let node = linkedList.head;
-    while (linkedList){
+    let node = linkedList;
+    while (node){
         if (counter === postion){
-            return node.value;
+            return node;
         }
-        counter++
+        counter ++
         node = node.next
     }
     return null
